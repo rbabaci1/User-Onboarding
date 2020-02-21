@@ -83,6 +83,8 @@ function InputForm({ errors, touched, isSubmitting, status }) {
           </button>
         </div>
       </Form>
+
+      <UserCard users={users} />
     </div>
   );
 }
