@@ -44,16 +44,29 @@ export default withFormik({
     firstName: "",
     lastName: "",
     email: "",
-    serviceTerms: ""
+    password: "",
+    serviceTerms: false
   }),
   validationSchema: yup.object().shape({
     firstName: yup
       .string()
-      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!")
-      .required(),
+      .required("Please Enter Your First Name.")
+      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!"),
+
     lastName: yup
       .string()
-      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!")
-      .required()
+      .required("Please Enter Your Last Name.")
+      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!"),
+    email: yup
+      .string()
+      .required("Please Enter Your Email.")
+      .email("Sorry, that's not a valid email."),
+    password: yup
+      .string()
+      .required("Please Enter Your Password.")
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      )
   })
 })(InputForm);
