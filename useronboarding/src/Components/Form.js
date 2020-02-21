@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 
-function InputForm({ values, errors, touched, isSubmitting }) {
+function InputForm({ errors, touched, isSubmitting }) {
+  const [users, setUsers] = useState([]);
+
   return (
     <div className="form-wrapper">
       <Form>
@@ -112,9 +114,14 @@ export default withFormik({
   }),
 
   handleSubmit: (values, formikBag) => {
-    const { resetForm, setSubmitting } = formikBag;
+    const { resetForm } = formikBag;
 
-    resetForm();
-    setSubmitting(false);
+    axios
+      .post("https://reqres.in/api/users", values)
+      .then(response => {
+        console.log(response);
+        resetForm();
+      })
+      .catch(error => console.error(error));
   }
 })(InputForm);
