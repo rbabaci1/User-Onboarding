@@ -3,11 +3,15 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 
 function InputForm({ values, errors, touched }) {
+  // console.log(errors);
   return (
     <div className="form-wrapper">
       <Form>
         <label>
           <Field type="text" name="firstName" placeholder="First Name" />
+          {touched.firstName && errors.firstName && (
+            <h3 className="error">{errors.firstName}</h3>
+          )}
         </label>
 
         <label>
