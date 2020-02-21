@@ -3,6 +3,8 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 
+import UserCard from "./UserCard";
+
 function InputForm({ errors, touched, isSubmitting }) {
   const [users, setUsers] = useState([]);
 
