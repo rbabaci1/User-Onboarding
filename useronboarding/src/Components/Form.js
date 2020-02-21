@@ -3,7 +3,7 @@ import { Form, Field, withFormik } from "formik";
 
 function InputForm(props) {
   return (
-    <div>
+    <div className="form-wrapper">
       <Form>
         <label>
           <Field type="text" name="name" placeholder="Name" />
