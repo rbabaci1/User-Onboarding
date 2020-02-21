@@ -18,7 +18,7 @@ function InputForm(props) {
         </label>
 
         <label className="checkbox-container">
-          Accept terms of service
+          Accept Terms of Service
           <Field type="checkbox" name="serviceTerms" />
           <span className="checkmark" />
         </label>
@@ -31,4 +31,10 @@ function InputForm(props) {
   );
 }
 
-export default withFormik({})(InputForm);
+export default withFormik({
+  mapPropsToValues: () => ({
+    name: "",
+    email: "",
+    serviceTerms: ""
+  })
+})(InputForm);
