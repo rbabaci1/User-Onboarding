@@ -2,8 +2,8 @@ import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 
-function InputForm({ values, errors, touched }) {
-  // console.log(errors);
+function InputForm({ values, errors, touched, isSubmitting }) {
+  // console.log(isSubmitting);
   return (
     <div className="form-wrapper">
       <Form>
@@ -70,7 +70,9 @@ function InputForm({ values, errors, touched }) {
         </label>
 
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting" : "Submit"}
+          </button>
         </div>
       </Form>
     </div>
@@ -110,8 +112,9 @@ export default withFormik({
   }),
 
   handleSubmit: (values, formikBag) => {
-    const { resetForm } = formikBag;
+    const { resetForm, setSubmitting } = formikBag;
 
     resetForm();
+    setSubmitting(false);
   }
 })(InputForm);
