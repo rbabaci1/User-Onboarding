@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 
 import UserCard from "./UserCard";
 
-function InputForm({ errors, touched, isSubmitting }) {
+function InputForm({ errors, touched, isSubmitting, status }) {
   const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    status && setUsers([...users, status]);
+  }, [status]);
 
   return (
     <div className="form-wrapper">
@@ -69,7 +73,7 @@ function InputForm({ errors, touched, isSubmitting }) {
 
         <label className="checkbox-container">
           Accept Terms of Service
-          <Field type="checkbox" name="serviceTerms" />
+          <Field type="checkbox" name="termsOfService" />
           <span className="checkmark" />
         </label>
 
@@ -89,7 +93,7 @@ export default withFormik({
     lastName: "",
     email: "",
     password: "",
-    serviceTerms: false
+    termsOfService: false
   }),
 
   validationSchema: yup.object().shape({
@@ -116,12 +120,12 @@ export default withFormik({
   }),
 
   handleSubmit: (values, formikBag) => {
-    const { resetForm } = formikBag;
+    const { resetForm, setStatus } = formikBag;
 
     axios
       .post("https://reqres.in/api/users", values)
       .then(response => {
-        console.log(response);
+        setStatus(response.data);
         resetForm();
       })
       .catch(error => console.error(error));
