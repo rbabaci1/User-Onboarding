@@ -3,11 +3,18 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 
 function InputForm(props) {
+  const { errors } = props;
+  console.log(errors);
+
   return (
     <div className="form-wrapper">
       <Form>
         <label>
-          <Field type="text" name="name" placeholder="Name" />
+          <Field type="text" name="firstName" placeholder="First Name" />
+        </label>
+
+        <label>
+          <Field type="text" name="lastName" placeholder="Last Name" />
         </label>
 
         <label>
@@ -34,8 +41,19 @@ function InputForm(props) {
 
 export default withFormik({
   mapPropsToValues: () => ({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     serviceTerms: ""
+  }),
+  validationSchema: yup.object().shape({
+    firstName: yup
+      .string()
+      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!")
+      .required(),
+    lastName: yup
+      .string()
+      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!")
+      .required()
   })
 })(InputForm);
