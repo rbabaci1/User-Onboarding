@@ -17,11 +17,15 @@ function InputForm(props) {
           <Field type="password" name="password" placeholder="Password" />
         </label>
 
-        <label>
+        <label className="checkbox-container">
+          Accept terms of service
           <Field type="checkbox" name="serviceTerms" />
+          <span className="checkmark" />
         </label>
 
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </Form>
     </div>
   );
