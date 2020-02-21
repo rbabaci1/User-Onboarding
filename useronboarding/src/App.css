@@ -9,7 +9,8 @@ form {
 
 input {
     width: 70%;
-    margin: 12px auto;
+    margin: auto;
+    margin-top: 30px;
     font-size: 20px;
     height: 30px;
     padding: 5px 8px;
@@ -103,7 +104,7 @@ button:hover {
 }
 
 .error {
-    margin: 0 0 20px 0;
     font-weight: 400;
     font-size: 22px;
+    margin: 0;
 }
