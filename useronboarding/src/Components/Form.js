@@ -16,14 +16,23 @@ function InputForm({ values, errors, touched }) {
 
         <label>
           <Field type="text" name="lastName" placeholder="Last Name" />
+          {touched.lastName && errors.lastName && (
+            <h3 className="error">{errors.lastName}</h3>
+          )}
         </label>
 
         <label>
           <Field type="email" name="email" placeholder="Email" />
+          {touched.email && errors.email && (
+            <h3 className="error">{errors.email}</h3>
+          )}
         </label>
 
         <label>
           <Field type="password" name="password" placeholder="Password" />
+          {touched.password && errors.password && (
+            <h3 className="error">{errors.password}</h3>
+          )}
         </label>
 
         <label className="checkbox-container">
@@ -52,23 +61,23 @@ export default withFormik({
   validationSchema: yup.object().shape({
     firstName: yup
       .string()
-      .required("Please Enter Your First Name.")
-      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!"),
+      .required("👆🏻 Please Enter Your First Name 👆🏻")
+      .matches(/^[a-zA-Z]+$/, "👆🏻 Sorry, only alphabet letters are allowed 👆🏻"),
 
     lastName: yup
       .string()
-      .required("Please Enter Your Last Name.")
-      .matches(/^[a-zA-Z]+$/, "Sorry, only alphabet letters are allowed!"),
+      .required("👆🏻 Please Enter Your Last Name 👆🏻")
+      .matches(/^[a-zA-Z]+$/, "👆🏻 Sorry, only alphabet letters are allowed 👆🏻"),
     email: yup
       .string()
-      .required("Please Enter Your Email.")
-      .email("Sorry, that's not a valid email."),
+      .required("👆🏻 Please Enter Your Email 👆🏻")
+      .email("👆🏻 Sorry, that's not a valid email 👆🏻"),
     password: yup
       .string()
-      .required("Please Enter Your Password.")
+      .required("👆🏻 Please Enter Your Password 👆🏻")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+        "👆🏻 Must Contain 8 Characters, 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character 👆🏻"
       )
   })
 
