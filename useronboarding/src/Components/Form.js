@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Field, withFormik } from "formik";
+import * as yup from "yup";
 
 function InputForm(props) {
   return (

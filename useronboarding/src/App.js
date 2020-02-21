@@ -6,7 +6,7 @@ import InputForm from "./Components/Form";
 function App() {
   return (
     <div className="App">
-      <InputForm name="rabah" />
+      <InputForm />
     </div>
   );
 }
