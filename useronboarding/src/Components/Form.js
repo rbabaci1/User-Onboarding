@@ -2,10 +2,7 @@ import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 
-function InputForm(props) {
-  const { errors } = props;
-  console.log(errors);
-
+function InputForm({ values, errors, touched }) {
   return (
     <div className="form-wrapper">
       <Form>
@@ -47,6 +44,7 @@ export default withFormik({
     password: "",
     serviceTerms: false
   }),
+
   validationSchema: yup.object().shape({
     firstName: yup
       .string()
@@ -69,4 +67,8 @@ export default withFormik({
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
       )
   })
+
+  // handleSubmit: props => {
+  //   console.log(props);
+  // }
 })(InputForm);
