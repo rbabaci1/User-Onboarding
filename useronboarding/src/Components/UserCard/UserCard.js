@@ -6,7 +6,7 @@ export default function UserCard({ users }) {
   return (
     <div className="users-wrapper">
       {users.map(user => (
-        <div className="user-card">
+        <div className="user-card" key={user.id}>
           <p>
             <span>First name: </span>
             {user.firstName}
