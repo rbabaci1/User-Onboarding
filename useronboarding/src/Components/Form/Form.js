@@ -34,13 +34,24 @@ function InputForm({ errors, touched, isSubmitting, status }) {
             type="text"
             name="lastName"
             placeholder="Last Name"
-            style={{ border: "1.5px solid blue" }}
+            style={{ border: "1.5px solid #4bbdca" }}
           />
           {touched.lastName && errors.lastName && (
-            <h3 className="error" style={{ color: "blue" }}>
+            <h3 className="error" style={{ color: "#4bbdca" }}>
               {errors.lastName}
             </h3>
           )}
+        </label>
+
+        <label className="choose-role">
+          <span>Role:</span>
+          <Field as="select" type="text" name="role">
+            <option disabled={true}>Choose a role</option>
+            <option value="webDeveloper">Web Developer</option>
+            <option value="dataScientist">Data Scientist</option>
+            <option value="student">Student</option>
+            <option value="other">Other</option>
+          </Field>
         </label>
 
         <label>
