@@ -5,12 +5,23 @@ import axios from "axios";
 
 import UserCard from "../UserCard/UserCard";
 
-function InputForm({ errors, touched, isSubmitting, status }) {
+function InputForm({ errors, touched, isSubmitting, status, values }) {
   const [users, setUsers] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
-    status && setUsers([...users, status]);
+    if (status) {
+      setUsers([...users, status]);
+      setSearchResult([...searchResult, status]);
+    }
   }, [status]);
+
+  useEffect(() => {
+    let results = searchResult.filter(user => {
+      return user.firstName.toLowerCase().includes(values.search.toLowerCase());
+    });
+    setSearchResult(results);
+  }, [values.search]);
 
   return (
     <div className="form-wrapper">
@@ -103,6 +114,8 @@ function InputForm({ errors, touched, isSubmitting, status }) {
           {errors.termsOfService && <h4>{errors.termsOfService}</h4>}
         </label>
 
+        <Field type="text" name="search" placeholder="Search User" />
+
         <div>
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Submitting" : "Submit"}
@@ -110,17 +123,18 @@ function InputForm({ errors, touched, isSubmitting, status }) {
         </div>
       </Form>
 
-      <UserCard users={users} />
+      <UserCard users={searchResult} />
     </div>
   );
 }
 
 export default withFormik({
   mapPropsToValues: () => ({
+    search: "",
     firstName: "",
     lastName: "",
     age: "",
-    role: "",
+    role: "Web Developer",
     email: "",
     password: "",
     termsOfService: false
