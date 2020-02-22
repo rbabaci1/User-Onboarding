@@ -7,15 +7,18 @@ export default function UserCard({ users }) {
     <div className="users-wrapper">
       {users.map(user => (
         <div className="user-card">
-          <h3>
-            First name: <span>{user.firstName}</span>
-          </h3>
-          <h3>
-            Last name: <span>{user.lastName}</span>
-          </h3>
-          <h3>
-            Email: <span>{user.email}</span>
-          </h3>
+          <p>
+            <span>First name: </span>
+            {user.firstName}
+          </p>
+          <p>
+            <span>Last name: </span>
+            {user.lastName}
+          </p>
+          <p>
+            <span>Email: </span>
+            {user.email}
+          </p>
         </div>
       ))}
     </div>

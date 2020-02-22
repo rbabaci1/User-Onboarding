@@ -62,10 +62,10 @@ function InputForm({ errors, touched, isSubmitting, status }) {
             type="password"
             name="password"
             placeholder="Password"
-            style={{ border: "1.5px solid #82320a" }}
+            style={{ border: "1.5px solid #F44336" }}
           />
           {touched.password && errors.password && (
-            <h3 className="error" style={{ color: "#82320a" }}>
+            <h3 className="error" style={{ color: "#F44336" }}>
               {errors.password}
             </h3>
           )}
