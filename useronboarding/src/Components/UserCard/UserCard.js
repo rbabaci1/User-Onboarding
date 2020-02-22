@@ -1,18 +1,20 @@
 import React from "react";
 
+import "./userCard.css";
+
 export default function UserCard({ users }) {
   return (
     <div className="users-wrapper">
       {users.map(user => (
-        <div>
+        <div className="user-card">
           <h3>
-            First Name: <span>{user.firstName}</span>
+            First name: <span>{user.firstName}</span>
           </h3>
           <h3>
-            First Name: <span>{user.lastName}</span>
+            Last name: <span>{user.lastName}</span>
           </h3>
           <h3>
-            First Name: <span>{user.email}</span>
+            Email: <span>{user.email}</span>
           </h3>
         </div>
       ))}
