@@ -139,6 +139,7 @@ export default withFormik({
     age: yup.number().required("Please enter your age."),
     email: yup
       .string()
+      .notOneOf(["waffle@syrup.com"], "That email is already taken.")
       .required("Please Enter Your Email.")
       .email("Sorry, that's not a valid email."),
     password: yup.string().required("Please Enter Your Password.")

@@ -16,6 +16,14 @@ export default function UserCard({ users }) {
             {user.lastName}
           </p>
           <p>
+            <span>Age: </span>
+            {user.age}
+          </p>
+          <p>
+            <span>Role: </span>
+            {user.role}
+          </p>
+          <p>
             <span>Email: </span>
             {user.email}
           </p>
