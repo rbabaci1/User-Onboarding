@@ -43,10 +43,24 @@ function InputForm({ errors, touched, isSubmitting, status }) {
           )}
         </label>
 
+        <label>
+          <Field
+            type="number"
+            name="age"
+            placeholder="Age"
+            style={{ border: "1.5px solid yellow" }}
+          />
+          {touched.age && errors.age && (
+            <h3 className="error" style={{ color: "yellow" }}>
+              {errors.age}
+            </h3>
+          )}
+        </label>
+
         <label className="choose-role">
           <span>Role:</span>
           <Field as="select" type="text" name="role">
-            <option disabled={true}>Choose a role</option>
+            <option disabled>Choose a role</option>
             <option value="webDeveloper">Web Developer</option>
             <option value="dataScientist">Data Scientist</option>
             <option value="student">Student</option>
@@ -105,6 +119,8 @@ export default withFormik({
   mapPropsToValues: () => ({
     firstName: "",
     lastName: "",
+    age: "",
+    role: "",
     email: "",
     password: "",
     termsOfService: false
@@ -120,6 +136,7 @@ export default withFormik({
       .string()
       .required("Please Enter Your Last Name.")
       .matches(/^[a-zA-Z]+$/, "Must contain alphabet letters only."),
+    age: yup.number().required("Please enter your age."),
     email: yup
       .string()
       .required("Please Enter Your Email.")
