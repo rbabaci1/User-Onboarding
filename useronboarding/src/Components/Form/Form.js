@@ -17,7 +17,7 @@ function InputForm({ errors, touched, isSubmitting, status, values }) {
   }, [status]);
 
   useEffect(() => {
-    let results = searchResult.filter(user => {
+    let results = users.filter(user => {
       return user.firstName.toLowerCase().includes(values.search.toLowerCase());
     });
     setSearchResult(results);
