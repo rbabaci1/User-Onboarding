@@ -4,6 +4,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  background-image: url(https://cdn.pixabay.com/photo/2020/01/07/13/36/sea-4747601_960_720.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 code {

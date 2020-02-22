@@ -113,13 +113,11 @@ export default withFormik({
       .string()
       .required("Please Enter Your Email.")
       .email("Sorry, that's not a valid email."),
-    password: yup
-      .string()
-      .required("Please Enter Your Password.")
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        "Must Contain 8 Characters, 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character."
-      )
+    password: yup.string().required("Please Enter Your Password.")
+    // .matches(
+    //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+    //   "Must Contain 8 Characters, 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character."
+    // )
   }),
 
   handleSubmit: (values, formikBag) => {
