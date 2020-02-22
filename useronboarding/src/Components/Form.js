@@ -75,6 +75,7 @@ function InputForm({ errors, touched, isSubmitting, status }) {
           Accept Terms of Service
           <Field type="checkbox" name="termsOfService" />
           <span className="checkmark" />
+          {errors.termsOfService && <h4>{errors.termsOfService}</h4>}
         </label>
 
         <div>
@@ -122,14 +123,19 @@ export default withFormik({
   }),
 
   handleSubmit: (values, formikBag) => {
-    const { resetForm, setStatus } = formikBag;
+    const { resetForm, setStatus, setErrors, setSubmitting } = formikBag;
 
-    axios
-      .post("https://reqres.in/api/users", values)
-      .then(response => {
-        setStatus(response.data);
-        resetForm();
-      })
-      .catch(error => console.error(error));
+    if (!values.termsOfService) {
+      setErrors({ termsOfService: "Please Accept Terms of Service." });
+      setSubmitting(false);
+    } else {
+      axios
+        .post("https://reqres.in/api/users", values)
+        .then(response => {
+          setStatus(response.data);
+          resetForm();
+        })
+        .catch(error => console.error(error));
+    }
   }
 })(InputForm);

@@ -48,6 +48,7 @@ input {
     height: 25px;
     width: 25px;
     background-color: #eee;
+    border: 2px solid rgb(251, 234, 79);
 }
 
 /* On mouse-over, add a grey background color */
@@ -107,4 +108,14 @@ button:hover {
     font-weight: 400;
     font-size: 22px;
     margin: 0;
+}
+
+/* check box error message style */
+
+h4 {
+    color: rgb(251, 234, 79);
+    font-family: "Monaco";
+    margin: 15px 0 0 0;
+    font-weight: 300;
+    font-size: 17px;
 }
